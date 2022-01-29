@@ -7,36 +7,37 @@ interface Tile {
 export default () => {
     const [tiles, setTiles] = useState<Tile[][]>([]);
     console.log(tiles)
-    useEffect(()=> {
+    useEffect(() => {
 
-        setTiles( [
-            [{colour:'blue'}, {colour:'blue'}], 
-                [{colour:'red'}]
-                ])
+
+
+
 
         // TODO set tiles
+        type Board = Tile[][]
+
+        const generateBoard = (length: number = 10) => {
+
+            const board: Board = [];
+            const tileOptions = [{ colour: 'blue' }]
+            for (let rowIndex = 0; rowIndex < length; rowIndex++) {
+                let row = []
+                for (let tileIndex = 0; tileIndex < length; tileIndex++) {
+                    const randomElement = tileOptions[Math.floor(Math.random() * tileOptions.length)];
+                    row.push(randomElement)
+                }
+                board.push(row)
+            }
+            return board
+        }
+        const b = generateBoard();
+        console.log(b);
+
+        setTiles(b)
 
 
-        // const generateBoard = (length: number=10) => {
+    }, [])
 
-        //     const board: Board = [];
-        //     const tileOptions = ['?', '#', 'W', '0']
-        //     for (let rowIndex = 0; rowIndex < length; rowIndex++) {
-        //         let row = []
-        //         for (let tileIndex = 0; tileIndex < length; tileIndex++) {
-        //             const randomElement = tileOptions[Math.floor(Math.random() * tileOptions.length)];
-        //             row.push(randomElement)
-        //         }
-        //         board.push(row)
-        //     }
-        //     return board
-        // }
-
-
-
-
-
-    },[])
 
     return <>
     <h1>Game</h1>
