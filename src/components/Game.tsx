@@ -40,15 +40,17 @@ export default () => {
 
     return <>
     <h1>Game</h1>
-
+<div className="container">
     {tiles.length !== 0 && tiles.map(row=> {
 
-        return <div>
+        return <div className="row">
             {row.map(t => {
-                return <div>{t.colour}</div>
+                return <div className="col-sm">{t.colour}</div>
             })}
         </div>
     })}
+</div>
+
 
     </>
 }
